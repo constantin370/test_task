@@ -18,14 +18,16 @@ git clone https://github.com/constantin370/test_task.git
 cd test_task
 ```
 
-Aктивировать виртуальное окружение:
+Cоздать и активировать виртуальное окружение:
 
 Windows
 ```
+python -m venv venv
 source venv/Scripts/activate
 ```
 Linux/macOS
 ```
+python3 -m venv venv
 source venv/bin/activate
 ```
 
