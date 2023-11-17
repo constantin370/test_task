@@ -4,5 +4,17 @@
   Регистрация
 {% endblock %}
 {% block content %}
-
+  <form method="POST" novalidate>
+    {% csrf_token %}
+    <div>
+    {% for field in form %}
+    <div class="form-group">
+        {{field.label_tag}}
+        <div>{{field}}</div>
+        <div class="error">{{field.errors}}</div>
+    </div>
+    {% endfor %}
+    </div>
+    <button type='submit'>Регистрация</button>
+  </form>
 {% endblock %}

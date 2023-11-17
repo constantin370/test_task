@@ -1,7 +1,23 @@
-from django.shortcuts import get_object_or_404, render
-
+from django.shortcuts import render
+from forms.forms import OrderForms
+from forms.models import MyForms
 # Create your views here.
 
-def forms(request):
-    templates = 'forms/forms.html'
-    return render(request, templates)
+def add_forms(request):
+    template = 'forms/forms.html'
+    form = OrderForms()
+
+    if request.method == 'POST':
+        form = OrderForms(request.POST or None)
+
+        if form.is_valid():
+            MyForms.objects.create(**form.cleaned_data)
+            form = OrderForms()
+
+    data = {
+        'form':form
+    }
+
+    return render(request, template, context=data)
+
+
